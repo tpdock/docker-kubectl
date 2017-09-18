@@ -11,12 +11,7 @@ RUN set -x && \
     apk add --no-cache curl ca-certificates && \
     chmod +x /usr/local/bin/kubectl && \
     \
-    # Create non-root user (with a randomly chosen UID/GUI).
-    adduser kubectl -Du 2342 -h /config && \
-    \
     # Basic check it works.
     kubectl version --client
-
-USER kubectl
 
 ENTRYPOINT ["/bin/sh"]
