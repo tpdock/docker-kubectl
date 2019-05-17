@@ -1,9 +1,10 @@
-FROM alpine:3.6
+FROM alpine:3.9
 
-# Install kubectl
-# Note: Latest version may be found on:
-# https://aur.archlinux.org/packages/kubectl-bin/
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.7.6/bin/linux/amd64/kubectl /usr/local/bin/kubectl
+ARG  KUBECTL_VERSION=v1.14.2
+
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-binary-with-curl-on-linux
+#
+ADD https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
 RUN set -x && \
     apk add --no-cache curl ca-certificates && \
